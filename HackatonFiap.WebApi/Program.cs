@@ -1,6 +1,11 @@
+using HackatonFiap.Aplicacao;
+using HackatonFiap.Infraestrutura;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddInfraestrutura(builder.Configuration);
+builder.Services.AddAplicacao();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
