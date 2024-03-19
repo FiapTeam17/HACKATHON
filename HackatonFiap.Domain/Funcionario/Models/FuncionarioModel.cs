@@ -1,4 +1,4 @@
-﻿namespace HackatonFiap.Dominio.Model;
+﻿namespace HackatonFiap.Dominio.Funcionario.Models;
 
 public record FuncionarioModel : BaseModel
 {

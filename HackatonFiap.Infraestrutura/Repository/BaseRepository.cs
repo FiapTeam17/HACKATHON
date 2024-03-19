@@ -2,7 +2,7 @@
 using System.Linq.Dynamic.Core;
 using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum;
-using HackatonFiap.Dominio.Model;
+using HackatonFiap.Dominio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Common.Extensions
+namespace HackatonFiap.Comum.Extensions
 {
     public static class StringExtension
     {

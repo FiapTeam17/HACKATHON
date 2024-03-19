@@ -1,5 +1,5 @@
 ﻿using HackatonFiap.Aplicacao.Interfaces;
-using HackatonFiap.Dominio.Model;
+using HackatonFiap.Dominio.Funcionario.Models;
 using HackatonFiap.Infraestrutura.Context;
 
 namespace HackatonFiap.Infraestrutura.Repository;

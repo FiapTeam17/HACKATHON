@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 
-
-namespace Common.Extensions
+namespace HackatonFiap.Comum.Extensions
 {
     public static class ObjectComparisonExtension
     {

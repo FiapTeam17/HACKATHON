@@ -1,5 +1,5 @@
-﻿using Common.Extensions;
-using HackatonFiap.Aplicacao.Interfaces;
+﻿using HackatonFiap.Aplicacao.Interfaces;
+using HackatonFiap.Comum.Extensions;
 using HackatonFiap.Infraestrutura.Context;
 using HackatonFiap.Infraestrutura.Repository;
 using HackatonFiap.Infraestrutura.Services;

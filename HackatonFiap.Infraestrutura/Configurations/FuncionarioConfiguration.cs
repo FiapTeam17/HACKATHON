@@ -1,4 +1,4 @@
-﻿using HackatonFiap.Dominio.Model;
+﻿using HackatonFiap.Dominio.Funcionario.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

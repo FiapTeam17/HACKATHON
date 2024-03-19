@@ -1,20 +1,24 @@
 using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum;
+using HackatonFiap.Comum.Interfaces;
+using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Funcionario.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HackatonFiap.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class FuncionarioController : ControllerBase
+public class FuncionarioController : BaseController
 {
     private readonly IFuncionarioUseCase _funcionarioUseCase;
     private readonly ILogger<FuncionarioController> _logger;
 
     public FuncionarioController(
         IFuncionarioUseCase funcionarioUseCase,
-        ILogger<FuncionarioController> logger
-    )
+        ILogger<FuncionarioController> logger,
+        INotificador notificador,
+        IUser appUser
+    )  : base(notificador, appUser)
     {
         _funcionarioUseCase = funcionarioUseCase;
         _logger = logger;
@@ -36,13 +40,14 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpPost()]
-    public async Task<ActionResult<FuncionarioDto>> Adicionar(FuncionarioDto command)
+    public async Task<ActionResult<FuncionarioDto>> Adicionar(FuncionarioDto funcionarioDto)
     {
-        return Ok();
+        var result = await _funcionarioUseCase.Adicionar(funcionarioDto);
+        return CustomResponse(result);
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<ActionResult<FuncionarioDto>> Atualizar(Guid id, FuncionarioDto command)
+    public async Task<ActionResult<FuncionarioDto>> Atualizar(Guid id, FuncionarioDto funcionarioDto)
     {
         return Ok();
     }

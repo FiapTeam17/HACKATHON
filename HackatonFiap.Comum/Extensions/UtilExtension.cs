@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Common.Extensions
+namespace HackatonFiap.Comum.Extensions
 {
     public static class UtilExtension
     {
