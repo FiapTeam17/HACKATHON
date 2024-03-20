@@ -23,38 +23,45 @@ public class FuncionarioController : BaseController
         _funcionarioUseCase = funcionarioUseCase;
         _logger = logger;
     }
-
-    [HttpGet("{id:guid}")]
-    public async Task<ActionResult<FuncionarioDto>> Obter(Guid id)
+    
+    [HttpGet()]
+    public async Task<ActionResult<ListaPaginada<FuncionarioDtoRetorno>>> ObterTodos(
+        [FromQuery] string filtro = "", 
+        [FromQuery] string ordenacao = "id asc", 
+        [FromQuery] int pagina = 1, 
+        [FromQuery] int qtdeRegistros = 10)
     {
-        return Ok();
+        var funcionarios = await _funcionarioUseCase.Listar(filtro, ordenacao,
+            pagina, qtdeRegistros);
+        return CustomResponse(funcionarios);
     }
 
-    [HttpGet()]
-    public async Task<ActionResult<ListaPaginada<FuncionarioDto>>> ObterTodos(
-        [FromQuery] string filtro = "", 
-        [FromQuery] bool ativo = true, [FromQuery] string ordenacao = "id asc", 
-        [FromQuery] int pagina = 1, [FromQuery] int qtdeRegistros = 10)
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<FuncionarioDtoRetorno>> Obter(Guid id)
     {
-        return Ok();
+        var funcionario = await _funcionarioUseCase.ObterPorId(id);
+        return CustomResponse(funcionario);
     }
 
     [HttpPost()]
-    public async Task<ActionResult<FuncionarioDto>> Adicionar(FuncionarioDto funcionarioDto)
+    public async Task<ActionResult<FuncionarioDtoRetorno>> Adicionar(FuncionarioDto funcionarioDto)
     {
         var result = await _funcionarioUseCase.Adicionar(funcionarioDto);
         return CustomResponse(result);
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<ActionResult<FuncionarioDto>> Atualizar(Guid id, FuncionarioDto funcionarioDto)
+    public async Task<ActionResult<FuncionarioDtoRetorno>> Atualizar(Guid id, FuncionarioDto funcionarioDto)
     {
-        return Ok();
+        funcionarioDto.Id = id;
+        var result = await _funcionarioUseCase.Atualizar(funcionarioDto);
+        return CustomResponse(result);
     }
 
     [HttpDelete("{id:guid}")]
-    public async Task<ActionResult<FuncionarioDto>> Excluir(Guid id)
+    public async Task<ActionResult<FuncionarioDtoRetorno>> Excluir(Guid id)
     {
-        return Ok();
+        var result = await _funcionarioUseCase.Excluir(id);
+        return CustomResponse(result);
     }
 }

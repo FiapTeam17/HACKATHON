@@ -4,7 +4,8 @@
     {
         bool TemNotificacao();
         List<Notificacao> ObterNotificacoes();
-        void Handle(Notificacao notificacao);
+        void Notificar(Notificacao notificacao);
+        void Notificar(string mensagem);
         public void Limpar();
     }
 }

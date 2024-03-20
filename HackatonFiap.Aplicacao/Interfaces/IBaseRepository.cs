@@ -6,11 +6,11 @@ namespace HackatonFiap.Aplicacao.Interfaces
 {
     public interface IBaseRepository<TEntity> : IDisposable where TEntity : class
     {
-        void Adicionar(TEntity entity, Action<TEntity> preLog = null);
-        Task<TEntity> Obter(Expression<Func<TEntity, bool>> expression, params string[] includes);
-        Task<TEntity> Obter(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes);
-        Task<TEntity> ObterTracking(Expression<Func<TEntity, bool>> expression, params string[] includes);
-        Task<TEntity> ObterTracking(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes);
+        void Adicionar(TEntity entity);
+        Task<TEntity?> Obter(Expression<Func<TEntity, bool>> expression, params string[] includes);
+        Task<TEntity?> Obter(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes);
+        Task<TEntity?> ObterTracking(Expression<Func<TEntity, bool>> expression, params string[] includes);
+        Task<TEntity?> ObterTracking(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes);
         Task<List<TEntity>> BuscarLista(Expression<Func<TEntity, bool>> expressao, params string[] includes);
         Task<List<TEntity>> BuscarLista(string ordenacao, Expression<Func<TEntity, bool>> expressao, params string[] includes);
         Task<List<TEntity>> BuscarLista(string filtro, string ordenacao = "id asc", params string[] includes);
@@ -18,9 +18,9 @@ namespace HackatonFiap.Aplicacao.Interfaces
         Task<List<TEntity>> BuscarListaTracking(string ordenacao, Expression<Func<TEntity, bool>> expressao, params string[] includes);
         Task<ListaPaginada<TEntity>> Buscar(Expression<Func<TEntity, bool>> expressao, string ordenacao = "id asc", int pagina = 1, int qtdeRegistros = 10, params string[] includes);
         Task<ListaPaginada<TEntity>> Buscar(string filtro, string ordenacao = "id asc", int pagina = 1, int qtdeRegistros = 10, params string[] includes);
-        void Atualizar(TEntity entity, Action<TEntity, TEntity> preLog = null);
-        void Remover(TEntity entity, Action<TEntity> preLog = null);
-        void Remover(List<TEntity> listaEntity, Action<TEntity> preLog = null);
+        void Atualizar(TEntity entity);
+        void Remover(TEntity entity);
+        void Remover(List<TEntity> listaEntity);
         Task<int> Count();
         Task<int> Count(Expression<Func<TEntity, bool>> expressao);
         Task<int> Count(string filtro);

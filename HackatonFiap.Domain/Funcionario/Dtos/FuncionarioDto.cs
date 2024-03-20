@@ -1,7 +1,10 @@
-﻿namespace HackatonFiap.Dominio.Funcionario.Dtos;
+﻿using System.Text.Json.Serialization;
 
-public class FuncionarioDto 
+namespace HackatonFiap.Dominio.Funcionario.Dtos;
+
+public class FuncionarioDto
 {
+    [JsonIgnore]
     public Guid Id { get; set; }
     public string Nome { get; set; }
     public string Email { get; set; }

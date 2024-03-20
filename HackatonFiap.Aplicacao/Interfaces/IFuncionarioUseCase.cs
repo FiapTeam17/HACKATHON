@@ -1,13 +1,15 @@
-﻿using HackatonFiap.Dominio.Funcionario.Dtos;
+﻿using HackatonFiap.Comum;
+using HackatonFiap.Dominio.Funcionario.Dtos;
 
 namespace HackatonFiap.Aplicacao.Interfaces
 {
     public interface IFuncionarioUseCase
     {
-        Task<FuncionarioDto> Adicionar(FuncionarioDto funcionarioDto);
-        Task<FuncionarioDto> ObterPorId(Guid id);
-        Task<List<FuncionarioDto>> ObterTodos();
-        Task<FuncionarioDto> Excluir(Guid id);
-        FuncionarioDto Atualizar(FuncionarioDto funcionarioDto);
+        Task<FuncionarioDtoRetorno?> Adicionar(FuncionarioDto funcionarioDto);
+        Task<FuncionarioDtoRetorno> ObterPorId(Guid id);
+        Task<ListaPaginada<FuncionarioDtoRetorno>> Listar(string filtro = "", string ordenacao = "id asc", 
+            int pagina = 1, int qtdeRegistros = 10);
+        Task<FuncionarioDtoRetorno?> Excluir(Guid id);
+        Task<FuncionarioDtoRetorno?> Atualizar(FuncionarioDto funcionario);
     }
 }

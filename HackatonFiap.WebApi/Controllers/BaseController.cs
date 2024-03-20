@@ -99,7 +99,7 @@ namespace HackatonFiap.Controllers
 
         protected void NotificarErro(string mensagem)
         {
-            Notificador.Handle(new Notificacao(mensagem));
+            Notificador.Notificar(new Notificacao(mensagem));
         }
 
 

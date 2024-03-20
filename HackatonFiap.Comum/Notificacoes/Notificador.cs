@@ -9,9 +9,14 @@
             _notificacoes = new List<Notificacao>();
         }
 
-        public void Handle(Notificacao notificacao)
+        public void Notificar(Notificacao notificacao)
         {
             _notificacoes.Add(notificacao);
+        }
+
+        public void Notificar(string mensagem)
+        {
+            _notificacoes.Add(new Notificacao(mensagem));
         }
 
         public List<Notificacao> ObterNotificacoes()

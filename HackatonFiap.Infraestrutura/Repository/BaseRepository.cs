@@ -26,29 +26,29 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         DbContextSet = dbContext.Set<TEntity>();
     }
 
-    public virtual async Task<TEntity> Obter(Expression<Func<TEntity, bool>> expression, params string[] includes)
+    public virtual async Task<TEntity?> Obter(Expression<Func<TEntity, bool>> expression, params string[] includes)
     {
         return await Obter(null, expression, includes);
     }
 
-    public async Task<TEntity> Obter(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes)
+    public async Task<TEntity?> Obter(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes)
     {
         var query = DbContextSet.AsNoTracking();
         return await Obter(ordenacao, query, expression, includes);
     }
 
-    public virtual async Task<TEntity> ObterTracking(Expression<Func<TEntity, bool>> expression, params string[] includes)
+    public virtual async Task<TEntity?> ObterTracking(Expression<Func<TEntity, bool>> expression, params string[] includes)
     {
         return await ObterTracking(null, expression, includes);
     }
 
-    public async Task<TEntity> ObterTracking(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes)
+    public async Task<TEntity?> ObterTracking(string ordenacao, Expression<Func<TEntity, bool>> expression, params string[] includes)
     {
         var query = DbContextSet.AsQueryable();
         return await Obter(ordenacao, query, expression, includes);
     }
 
-    protected async Task<TEntity> Obter(string ordenacao, IQueryable<TEntity> query, Expression<Func<TEntity, bool>> expression, params string[] includes)
+    protected async Task<TEntity?> Obter(string ordenacao, IQueryable<TEntity> query, Expression<Func<TEntity, bool>> expression, params string[] includes)
     {
         if (includes != null && includes.Any())
         {
@@ -176,7 +176,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         return result;
     }
 
-    public virtual void Adicionar(TEntity entity, Action<TEntity> preLog = null)
+    public virtual void Adicionar(TEntity entity)
     {
         var trackerEntrie = GetTraked(entity);
             
@@ -191,7 +191,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         }
     }
         
-    public virtual void Atualizar(TEntity entity, Action<TEntity, TEntity> preLog = null)
+    public virtual void Atualizar(TEntity entity)
     {
         var trackerEntrie = GetTraked(entity);
             
@@ -206,7 +206,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         }
     }
 
-    private EntityEntry GetTraked(TEntity entity)
+    private EntityEntry? GetTraked(TEntity entity)
     {
             
         if(entity is BaseModel)
@@ -221,7 +221,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         return null;
     }
 
-    public virtual void Remover(TEntity entity, Action<TEntity> preLog = null)
+    public virtual void Remover(TEntity entity)
     {
         var trackerEntrie = GetTraked(entity);
             
@@ -235,11 +235,11 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         }
     }
 
-    public virtual void Remover(List<TEntity> listaEntity, Action<TEntity> preLog = null)
+    public virtual void Remover(List<TEntity> listaEntity)
     {
         foreach (var entity in listaEntity)
         {
-            Remover(entity, preLog);
+            Remover(entity);
         }
     }
 
