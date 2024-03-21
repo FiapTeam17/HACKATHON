@@ -1,6 +1,5 @@
 using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum;
-using HackatonFiap.Comum.Interfaces;
 using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Funcionario.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +15,8 @@ public class FuncionarioController : BaseController
     public FuncionarioController(
         IFuncionarioUseCase funcionarioUseCase,
         ILogger<FuncionarioController> logger,
-        INotificador notificador,
-        IUser appUser
-    )  : base(notificador, appUser)
+        INotificador notificador
+    )  : base(notificador)
     {
         _funcionarioUseCase = funcionarioUseCase;
         _logger = logger;

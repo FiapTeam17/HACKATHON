@@ -9,7 +9,9 @@
         "DB_SERVER": "bG9jYWxob3N0",
         "DB_USER": "cm9vdA==",
         "DB_PASS": "MzQ5NA==",
-        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8="
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
+        "AWS_REGION": "dXMtZWFzdC0y",
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ=="
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5081"
@@ -23,7 +25,9 @@
         "DB_SERVER": "bG9jYWxob3N0",
         "DB_USER": "cm9vdA==",
         "DB_PASS": "MzQ5NA==",
-        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8="
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
+        "AWS_REGION": "dXMtZWFzdC0y",
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ=="
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7185;http://localhost:5081"
