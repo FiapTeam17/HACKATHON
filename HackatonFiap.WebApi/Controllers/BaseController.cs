@@ -12,9 +12,6 @@ namespace HackatonFiap.Controllers
     {
         protected readonly INotificador Notificador;
 
-        protected Guid UsuarioId { get; set; }
-        protected bool UsuarioAutenticado { get; set; }
-
         protected BaseController(INotificador notificador)
         {
             Notificador = notificador;

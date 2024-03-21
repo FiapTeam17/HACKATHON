@@ -8,6 +8,7 @@ namespace HackatonFiap.Aplicacao;
     {
         public static IServiceCollection AddAplicacao(this IServiceCollection services)
         {
+            services.AddScoped<IAutenticacaoUseCase, AutenticacaoUseCase>();
             services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
 
             return services;

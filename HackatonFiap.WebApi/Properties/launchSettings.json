@@ -11,7 +11,8 @@
         "DB_PASS": "MzQ5NA==",
         "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
         "AWS_REGION": "dXMtZWFzdC0y",
-        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ=="
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
+        "CLIENT_LOGIN_ID" :"MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk="
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5081"
@@ -27,7 +28,8 @@
         "DB_PASS": "MzQ5NA==",
         "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
         "AWS_REGION": "dXMtZWFzdC0y",
-        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ=="
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
+        "CLIENT_LOGIN_ID" :"MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk="
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7185;http://localhost:5081"

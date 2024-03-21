@@ -1,5 +1,6 @@
 using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum;
+using HackatonFiap.Comum.Interfaces;
 using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Funcionario.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -11,15 +12,18 @@ public class FuncionarioController : BaseController
 {
     private readonly IFuncionarioUseCase _funcionarioUseCase;
     private readonly ILogger<FuncionarioController> _logger;
+    private readonly IUser _user;
 
     public FuncionarioController(
         IFuncionarioUseCase funcionarioUseCase,
         ILogger<FuncionarioController> logger,
+        IUser user,
         INotificador notificador
     )  : base(notificador)
     {
         _funcionarioUseCase = funcionarioUseCase;
         _logger = logger;
+        _user = user;
     }
     
     [HttpGet()]
@@ -29,6 +33,7 @@ public class FuncionarioController : BaseController
         [FromQuery] int pagina = 1, 
         [FromQuery] int qtdeRegistros = 10)
     {
+        var email = _user.GetUserNome();
         var funcionarios = await _funcionarioUseCase.Listar(filtro, ordenacao,
             pagina, qtdeRegistros);
         return CustomResponse(funcionarios);
