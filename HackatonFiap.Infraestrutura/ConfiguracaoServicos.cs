@@ -1,7 +1,10 @@
-﻿using HackatonFiap.Aplicacao.Interfaces;
+﻿using Amazon.CognitoIdentityProvider;
+using HackatonFiap.Aplicacao.Interfaces;
+using HackatonFiap.Aplicacao.Interfaces.Integracao;
 using HackatonFiap.Comum.Extensions;
 using HackatonFiap.Infraestrutura.Context;
 using HackatonFiap.Infraestrutura.Repository;
+using HackatonFiap.Infraestrutura.Repository.Integracao;
 using HackatonFiap.Infraestrutura.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,12 +44,19 @@ public static class ConfiguracaoServicos
             options.UseMySQL(connectionString, op => op.CommandTimeout(600));
         });
         
+        services.AddAWSService<IAmazonCognitoIdentityProvider>();
+        
         services.AddScoped<DatabaseContext>();
         services.AddScoped<DbContext, DatabaseContext>();
         
+        services.AddScoped<ICognitoRepository, CognitoRepository>();
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+<<<<<<< HEAD
         services.AddScoped<IPontoRepository, PontoRepository>();
         services.AddScoped<ITransactionService, TransactionService>();            
+=======
+        services.AddScoped<ITransactionService, TransactionService>();
+>>>>>>> 7fa9c1e1fdc197980e9a1d670330ad4a493e61c3
 
         return services;
     }

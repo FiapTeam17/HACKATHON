@@ -3,6 +3,7 @@ using System;
 using HackatonFiap.Infraestrutura.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HackatonFiap.Infraestrutura.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240321172358_FuncionarioIdCognito")]
+    partial class FuncionarioIdCognito
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,35 +44,6 @@ namespace HackatonFiap.Infraestrutura.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("funcionario", (string)null);
-                });
-
-            modelBuilder.Entity("HackatonFiap.Dominio.Ponto.Models.PontoModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid?>("FuncionarioId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime>("Horario")
-                        .HasMaxLength(200)
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.ToTable("ponto", (string)null);
-                });
-
-            modelBuilder.Entity("HackatonFiap.Dominio.Ponto.Models.PontoModel", b =>
-                {
-                    b.HasOne("HackatonFiap.Dominio.Funcionario.Models.FuncionarioModel", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId");
-
-                    b.Navigation("Funcionario");
                 });
 #pragma warning restore 612, 618
         }
