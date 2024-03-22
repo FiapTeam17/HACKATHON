@@ -17,14 +17,18 @@ namespace HackatonFiap;
             string vaUserpool = string.IsNullOrEmpty(confUserPool) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(confUserPool);
             configuration["Cognito:UserPoolId"] = vaUserpool;
             
+            var confAuthority = configuration["Cognito:Authority"];
+            confAuthority = confAuthority?.Replace("[AWS_REGION]", vaRegion);
+            confAuthority = confAuthority?.Replace("[USER_POOL_ID]", vaUserpool);
+            configuration["Cognito:Authority"] = confAuthority;
+            
             var confClientLoginId = configuration["Cognito:ClientLoginId"];
             string vaClientLoginId = string.IsNullOrEmpty(confClientLoginId) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(confClientLoginId);
             configuration["Cognito:ClientLoginId"] = vaClientLoginId;
-
-            var confAuthority = configuration["Cognito:Authority"];
-            confAuthority = confAuthority?.Replace("[AWS_REGION]", vaRegion);
-            confAuthority = confAuthority?.Replace("[USER_POOL_ID]", vaClientLoginId);
-            configuration["Cognito:Authority"] = confAuthority;
+            
+            var confClientId = configuration["Cognito:ClientId"];
+            string vaClientId = string.IsNullOrEmpty(confClientId) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(confClientId);
+            configuration["Cognito:ClientId"] = vaClientId;
             
             var confLoginUser = configuration["Cognito:LoginUser"];
             configuration["Cognito:LoginUser"] = confLoginUser?.Replace("[AWS_REGION]", vaRegion);

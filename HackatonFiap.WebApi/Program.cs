@@ -8,9 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddInfraestrutura(builder.Configuration);
-builder.Services.AddAplicacao();
 builder.Services.AddWebApi(builder.Configuration);
+builder.Services.AddAplicacao();
+builder.Services.AddInfraestrutura(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(Program), typeof(DomainAssembly));
 

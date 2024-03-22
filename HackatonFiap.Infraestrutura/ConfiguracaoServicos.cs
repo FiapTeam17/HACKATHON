@@ -1,4 +1,5 @@
-﻿using HackatonFiap.Aplicacao.Interfaces;
+﻿using Amazon.CognitoIdentityProvider;
+using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Aplicacao.Interfaces.Integracao;
 using HackatonFiap.Comum.Extensions;
 using HackatonFiap.Infraestrutura.Context;
@@ -42,6 +43,8 @@ public static class ConfiguracaoServicos
         {
             options.UseMySQL(connectionString, op => op.CommandTimeout(600));
         });
+        
+        services.AddAWSService<IAmazonCognitoIdentityProvider>();
         
         services.AddScoped<DatabaseContext>();
         services.AddScoped<DbContext, DatabaseContext>();
