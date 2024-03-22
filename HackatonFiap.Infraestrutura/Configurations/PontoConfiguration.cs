@@ -18,7 +18,7 @@ namespace HackatonFiap.Infraestrutura.Configurations
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Horario).HasMaxLength(200).IsRequired();
-            builder.Property(c => c.Funcionario).HasMaxLength(200).IsRequired();
+            builder.HasOne(a => a.Funcionario);
         }
     }
 }

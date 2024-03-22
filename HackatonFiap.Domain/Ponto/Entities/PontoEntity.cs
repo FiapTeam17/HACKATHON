@@ -9,7 +9,7 @@ namespace HackatonFiap.Dominio.Ponto.Entities
 {
     public class PontoEntity
     {
-        public DateTime horario;
-        public FuncionarioModel? funcionario;
+        public DateTime horario { get; set; }
+        public FuncionarioModel? funcionario { get; set; }
     }
 }

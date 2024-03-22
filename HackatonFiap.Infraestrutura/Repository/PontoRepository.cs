@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HackatonFiap.Infraestrutura.Repository
 {
-    internal class PontoRepository : BaseRepository<PontoModel>
+    public class PontoRepository : BaseRepository<PontoModel>, IPontoRepository
     {
         public PontoRepository(DatabaseContext dbContext,
         ITransactionService transactionService) : base(dbContext, transactionService)

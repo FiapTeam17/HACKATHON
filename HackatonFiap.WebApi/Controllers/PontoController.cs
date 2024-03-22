@@ -16,13 +16,13 @@ namespace HackatonFiap.Controllers
         private readonly ILogger<PontoController> _logger;
 
         public PontoController(
-            IPontoUseCase funcionarioUseCase,
+            IPontoUseCase pontoUseCase,
             ILogger<PontoController> logger,
             INotificador notificador,
             IUser appUser
         ) : base(notificador, appUser)
         {
-            _pontoUseCase = funcionarioUseCase;
+            _pontoUseCase = pontoUseCase;
             _logger = logger;
         }
 

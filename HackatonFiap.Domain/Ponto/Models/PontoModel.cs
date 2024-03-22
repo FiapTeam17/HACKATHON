@@ -9,7 +9,7 @@ namespace HackatonFiap.Dominio.Ponto.Models
 {
     public record PontoModel : BaseModel
     {
-        public DateTime Horario;
-        public FuncionarioModel? Funcionario;
+        public DateTime Horario { get; set; }
+        public FuncionarioModel? Funcionario { get; set; }
     }
 }

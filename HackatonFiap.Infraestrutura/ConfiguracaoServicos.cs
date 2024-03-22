@@ -45,6 +45,7 @@ public static class ConfiguracaoServicos
         services.AddScoped<DbContext, DatabaseContext>();
         
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+        services.AddScoped<IPontoRepository, PontoRepository>();
         services.AddScoped<ITransactionService, TransactionService>();            
 
         return services;

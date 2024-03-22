@@ -4,12 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HackatonFiap.Aplicacao;
 
-    public static class ConfiguracaoServicos
+public static class ConfiguracaoServicos
+{
+    public static IServiceCollection AddAplicacao(this IServiceCollection services)
     {
-        public static IServiceCollection AddAplicacao(this IServiceCollection services)
-        {
-            services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
+        services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
+        services.AddScoped<IPontoUseCase, PontoUseCase>();
 
-            return services;
-        }
+        return services;
     }
+}
