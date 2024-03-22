@@ -51,6 +51,8 @@ public static class ConfiguracaoServicos
         
         services.AddScoped<ICognitoRepository, CognitoRepository>();
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+
+        services.AddScoped<IPontoRepository, PontoRepository>();
         services.AddScoped<ITransactionService, TransactionService>();
 
         return services;
