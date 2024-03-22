@@ -11,7 +11,7 @@ public static class ConfiguracaoServicos
         services.AddScoped<IAutenticacaoUseCase, AutenticacaoUseCase>();
         services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
         services.AddScoped<IPontoUseCase, PontoUseCase>();
-        services.AddScoped<ISolicitaRelatorioPontoUseCase, SolicitaRelatorioPontoUseCase>();
+        //services.AddScoped<ISolicitaRelatorioPontoUseCase, SolicitaRelatorioPontoUseCase>();
 
         return services;
 

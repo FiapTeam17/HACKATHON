@@ -22,12 +22,12 @@ public class SolicitaRelatorioPontoUseCase : ISolicitaRelatorioPontoUseCase
 
     public SolicitaRelatorioPontoUseCase(
             IPontoRepository pontoRepository,
-            ISolicitaRelatorioPontoRepository solicitaRelatorioPontoRepository,
             IFuncionarioRepository funcionarioRepository,
             INotificador notificador,
             IMapper mapper,
             IFuncionarioUseCase funcionarioUseCase,
-            ISolicitaRelatorioPontoUseCase solicitaRelatorioPontoUseCase
+            ISolicitaRelatorioPontoUseCase solicitaRelatorioPontoUseCase,
+            ISolicitaRelatorioPontoRepository solicitaRelatorioPontoRepository
             )
     {
         _pontoRepository = pontoRepository;
