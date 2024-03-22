@@ -2,6 +2,7 @@
 using HackatonFiap.Dominio.Ponto.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,11 @@ namespace HackatonFiap.Infraestrutura.Configurations
         {
             builder.ToTable("ponto");
             builder.HasKey(c => c.Id);
-
             builder.Property(c => c.Horario).HasMaxLength(200).IsRequired();
-            builder.HasOne(a => a.Funcionario);
+            builder
+                .HasOne(a => a.Funcionario)
+                .WithMany(a => a.Pontos)
+                .HasConstraintName("FK_Ponto_Funcionario");
         }
     }
 }

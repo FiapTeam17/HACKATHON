@@ -44,10 +44,11 @@ namespace HackatonFiap.Aplicacao.UserCases
             var funcionario = await _funcionarioRepository.Obter(f => f.Email == registroPontoDto.EmailFuncionario);
             var registroPonto = new PontoModel {
                 Horario = registroPontoDto.Horario,
-                Funcionario = funcionario
+                FuncionarioId = funcionario.Id
             };
 
             _pontoRepository.Adicionar(registroPonto);
+            await _pontoRepository.SaveChanges();
         }
     }
 }

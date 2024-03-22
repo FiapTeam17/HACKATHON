@@ -11,5 +11,6 @@ namespace HackatonFiap.Dominio.Ponto.Models
     {
         public DateTime Horario { get; set; }
         public FuncionarioModel? Funcionario { get; set; }
+        public Guid FuncionarioId { get; set; }
     }
 }
