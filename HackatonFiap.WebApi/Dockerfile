@@ -1,23 +1,28 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["HackatonFiap/HackatonFiap.csproj", "HackatonFiap/"]
-RUN dotnet restore "./HackatonFiap/HackatonFiap.csproj"
+
+COPY ["HackatonFiap.sln", "HackatonFiap.sln"]
+COPY ["HackatonFiap.Aplicacao/HackatonFiap.Aplicacao.csproj", "HackatonFiap.Aplicacao/"]
+COPY ["HackatonFiap.Comum/HackatonFiap.Comum.csproj", "HackatonFiap.Comum/"]
+COPY ["HackatonFiap.Domain/HackatonFiap.Domain.csproj", "HackatonFiap.Domain/"]
+COPY ["HackatonFiap.Infraestrutura/HackatonFiap.Infraestrutura.csproj", "HackatonFiap.Infraestrutura/"]
+COPY ["HackatonFiap.WebApi/HackatonFiap.WebApi.csproj", "HackatonFiap.WebApi/"]
+RUN dotnet restore "./HackatonFiap.sln"
+
 COPY . .
-WORKDIR "/src/HackatonFiap"
-RUN dotnet build "./HackatonFiap.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/HackatonFiap.WebApi"
+RUN dotnet build "./HackatonFiap.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./HackatonFiap.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./HackatonFiap.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
