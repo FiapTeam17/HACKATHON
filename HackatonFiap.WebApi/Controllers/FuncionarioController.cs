@@ -33,7 +33,7 @@ public class FuncionarioController : BaseController
         [FromQuery] int pagina = 1, 
         [FromQuery] int qtdeRegistros = 10)
     {
-        var email = _user.GetUserNome();
+        var email = _user.GetUserEmail();
         var funcionarios = await _funcionarioUseCase.Listar(filtro, ordenacao,
             pagina, qtdeRegistros);
         return CustomResponse(funcionarios);

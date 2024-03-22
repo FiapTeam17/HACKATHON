@@ -20,7 +20,7 @@ namespace HackatonFiap.Controllers
             ILogger<PontoController> logger,
             INotificador notificador,
             IUser appUser
-        ) : base(notificador, appUser)
+        ) : base(notificador)
         {
             _pontoUseCase = pontoUseCase;
             _logger = logger;
