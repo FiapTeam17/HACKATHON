@@ -1,10 +1,8 @@
-﻿using HackatonFiap.Dominio.Funcionario.Dtos;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using HackatonFiap.Dominio.Ponto.Dtos;
-using HackatonFiap.Aplicacao.Interfaces;
+﻿using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum.Interfaces;
 using HackatonFiap.Comum.Notificacoes;
+using HackatonFiap.Dominio.Ponto.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HackatonFiap.Controllers
 {
@@ -13,16 +11,18 @@ namespace HackatonFiap.Controllers
     public class PontoController : BaseController
     {
         private readonly IPontoUseCase _pontoUseCase;
+        private readonly IUser _user;
         private readonly ILogger<PontoController> _logger;
 
         public PontoController(
             IPontoUseCase pontoUseCase,
+            IUser user,
             ILogger<PontoController> logger,
-            INotificador notificador,
-            IUser appUser
-        ) : base(notificador, appUser)
+            INotificador notificador
+        ) : base(notificador)
         {
             _pontoUseCase = pontoUseCase;
+            _user = user;
             _logger = logger;
         }
 
