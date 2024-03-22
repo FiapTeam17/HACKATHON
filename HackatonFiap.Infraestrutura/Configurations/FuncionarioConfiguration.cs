@@ -13,6 +13,7 @@ namespace HackatonFiap.Infraestrutura.Configurations
 
             builder.Property(c => c.Nome).HasMaxLength(200).IsRequired();
             builder.Property(c => c.Email).HasMaxLength(200).IsRequired();
+            
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using HackatonFiap.Comum;
-using HackatonFiap.Comum.Interfaces;
 using HackatonFiap.Comum.Notificacoes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,24 +7,14 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace HackatonFiap.Controllers
 {
     [ApiController]
+    [Authorize]
     public abstract class BaseController : ControllerBase
     {
         protected readonly INotificador Notificador;
-        protected readonly IUser AppUser;
 
-        protected Guid UsuarioId { get; set; }
-        protected bool UsuarioAutenticado { get; set; }
-
-        protected BaseController(INotificador notificador, IUser appUser)
+        protected BaseController(INotificador notificador)
         {
             Notificador = notificador;
-            AppUser = appUser;
-
-            if (appUser.IsAuthenticated())
-            {
-                UsuarioId = appUser.GetUserId();
-                UsuarioAutenticado = true;
-            }
         }
 
         protected bool OperacaoValida()

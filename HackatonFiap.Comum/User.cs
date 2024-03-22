@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using HackatonFiap.Comum.Extensions;
 using HackatonFiap.Comum.Interfaces;
 using Microsoft.AspNetCore.Http;
 
@@ -16,12 +15,12 @@ public class User : IUser
 
     public string? Name => _accessor.HttpContext?.User.Identity?.Name;
 
-    public Guid GetUserId()
+    public string GetUserId()
     {
         if(_accessor.HttpContext == null)
-            return Guid.Empty;
+            return string.Empty;
             
-        return IsAuthenticated() ? Guid.Parse(_accessor.HttpContext.User.GetUserId() ?? string.Empty) : Guid.Empty;
+        return IsAuthenticated() ? _accessor.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty : string.Empty;
     }
 
     public string? GetUserEmail()
@@ -29,7 +28,15 @@ public class User : IUser
         if(_accessor.HttpContext == null)
             return string.Empty;
             
-        return IsAuthenticated() ? _accessor.HttpContext.User.GetUserEmail() : string.Empty;
+        return IsAuthenticated() ? _accessor.HttpContext.User?.FindFirst(ClaimTypes.Email)?.Value : string.Empty;
+    }
+
+    public string? GetUserNome()
+    {
+        if(_accessor.HttpContext == null)
+            return string.Empty;
+            
+        return IsAuthenticated() ? _accessor?.HttpContext?.User?.Claims.FirstOrDefault(c => c.Type.Equals("name"))?.Value : string.Empty;
     }
 
     public bool IsAuthenticated()
