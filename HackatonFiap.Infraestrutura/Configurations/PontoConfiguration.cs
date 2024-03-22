@@ -17,8 +17,8 @@ namespace HackatonFiap.Infraestrutura.Configurations
             builder.ToTable("ponto");
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.horario).HasMaxLength(200).IsRequired();
-            builder.Property(c => c.funcionario).HasMaxLength(200).IsRequired();
+            builder.Property(c => c.Horario).HasMaxLength(200).IsRequired();
+            builder.Property(c => c.Funcionario).HasMaxLength(200).IsRequired();
         }
     }
 }
