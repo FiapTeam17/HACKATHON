@@ -13,5 +13,6 @@ public static class ConfiguracaoServicos
         services.AddScoped<IPontoUseCase, PontoUseCase>();
 
         return services;
+
     }
 }
