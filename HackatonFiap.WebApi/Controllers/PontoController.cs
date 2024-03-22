@@ -30,7 +30,7 @@ namespace HackatonFiap.Controllers
         public async Task<ActionResult> RegistrarPonto(RegistroPontoDto registroPontoDto)
         {
             await _pontoUseCase.RegistrarPonto(registroPontoDto);
-            return CustomResponse("OK");
+            return Ok();
         }
 
         [HttpGet(("{id}"))]
