@@ -55,6 +55,8 @@ public static class ConfiguracaoServicos
         services.AddScoped<IPontoRepository, PontoRepository>();
         services.AddScoped<ITransactionService, TransactionService>();
 
+        services.AddScoped<ISolicitaRelatorioPontoRepository, SolicitaRelatorioPontoRepository>();
+
         return services;
     }
 }

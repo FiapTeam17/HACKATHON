@@ -13,9 +13,11 @@ namespace HackatonFiap.Controllers
         private readonly IPontoUseCase _pontoUseCase;
         private readonly IUser _user;
         private readonly ILogger<PontoController> _logger;
+        private readonly ISolicitaRelatorioPontoUseCase _solicitaRelatorioPontoUseCase;
 
         public PontoController(
             IPontoUseCase pontoUseCase,
+            ISolicitaRelatorioPontoUseCase solicitaRelatorioPontoUseCase,
             IUser user,
             ILogger<PontoController> logger,
             INotificador notificador
@@ -24,6 +26,7 @@ namespace HackatonFiap.Controllers
             _pontoUseCase = pontoUseCase;
             _user = user;
             _logger = logger;
+            _solicitaRelatorioPontoUseCase = solicitaRelatorioPontoUseCase;
         }
 
         [HttpPost()]
@@ -37,6 +40,14 @@ namespace HackatonFiap.Controllers
         public async Task<ActionResult> GerarRelatorioDePonto(string email)
         {
             await _pontoUseCase.listarRegistrosFuncionario(email);
+            return CustomResponse("OK");
+
+        }
+
+        [HttpPost()]
+        public async Task<ActionResult> SolicitarRelatorioPonto(SolicitaRelatorioPontoDto solicitaRelatorioPontoDto)
+        {
+            await _solicitaRelatorioPontoUseCase.SolicitaRelatorioPonto(solicitaRelatorioPontoDto);
             return CustomResponse("OK");
         }
     }
