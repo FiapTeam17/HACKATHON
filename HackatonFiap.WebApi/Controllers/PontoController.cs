@@ -44,8 +44,8 @@ namespace HackatonFiap.Controllers
 
         }
 
-        [HttpPost()]
-        public async Task<ActionResult> SolicitarRelatorioPonto(SolicitaRelatorioPontoDto solicitaRelatorioPontoDto)
+        [HttpPost("solicitarRelatorioPonto")]
+        public async Task<ActionResult> SolicitarRelatorioPonto([FromBody]SolicitaRelatorioPontoDto solicitaRelatorioPontoDto)
         {
             await _solicitaRelatorioPontoUseCase.SolicitaRelatorioPonto(solicitaRelatorioPontoDto);
             return CustomResponse("OK");

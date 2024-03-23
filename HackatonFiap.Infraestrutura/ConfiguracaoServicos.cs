@@ -50,6 +50,7 @@ public static class ConfiguracaoServicos
         services.AddScoped<DbContext, DatabaseContext>();
 
         services.AddScoped<ICognitoRepository, CognitoRepository>();
+        services.AddScoped<ISqsRepository, SqsRepository>();
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 
         services.AddScoped<IPontoRepository, PontoRepository>();

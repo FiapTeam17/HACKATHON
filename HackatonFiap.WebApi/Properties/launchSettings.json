@@ -24,15 +24,17 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DB_SERVER": "localhost",
-        "DB_USER": "root",
-        "DB_PASS": "senha",
-        "DB_SCHEMA": "sgr_database_producao",
+        "DB_SERVER": "ZmlhcC1oYWNrYXRvbi5jdTd5ajNnamprczEudXMtZWFzdC0yLnJkcy5hbWF6b25hd3MuY29t",
+        "DB_USER": "cm9vdA==",
+        "DB_PASS": "c2VuaGExMjM=",
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
         "REGION": "dXMtZWFzdC0y",
         "AWS_REGION": "us-east-2",
         "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
         "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
-        "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA=="
+        "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
+        "AWS_CLIENT_ID": "",
+        "AWS_CLIENT_SECRET": ""
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7185;http://localhost:5081"

@@ -13,5 +13,5 @@ public record SolicitaRelatorioPontoModel : BaseModel
     public FuncionarioModel? Funcionario { get; set; }
     public DateTime DataInicio { get; set; }
     public DateTime DataFim { get; set; }
-    public SolicitaRelatorioPontoStatusEnum Status { get; set; }
+    public string Status { get; set; }
 }
