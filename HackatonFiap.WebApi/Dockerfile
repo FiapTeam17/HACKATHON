@@ -27,4 +27,4 @@ RUN dotnet publish "./HackatonFiap.WebApi.csproj" -c $BUILD_CONFIGURATION -o /ap
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HackatonFiap.dll"]
+ENTRYPOINT ["dotnet", "HackatonFiap.WebApi.dll"]
