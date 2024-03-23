@@ -3,6 +3,7 @@ using System;
 using HackatonFiap.Infraestrutura.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HackatonFiap.Infraestrutura.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240322231435_SolicitaRelatorio")]
+    partial class SolicitaRelatorio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,9 +59,6 @@ namespace HackatonFiap.Infraestrutura.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("tipo")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FuncionarioId");
@@ -71,9 +71,6 @@ namespace HackatonFiap.Infraestrutura.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
-
-                    b.Property<string>("CaminhoArquivo")
-                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DataFim")
                         .HasColumnType("datetime(6)");

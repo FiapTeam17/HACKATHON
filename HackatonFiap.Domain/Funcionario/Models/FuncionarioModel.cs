@@ -9,4 +9,5 @@ public record FuncionarioModel : BaseModel
     public string? CognitoId { get; set; }
 
     public List<PontoModel>? Pontos { get; set; }
+    public List<SolicitaRelatorioPontoModel>? SolicitaRelatorioPontos { get; set; }
 }

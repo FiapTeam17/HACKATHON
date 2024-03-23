@@ -14,8 +14,9 @@ namespace HackatonFiap.Dominio.Ponto.AutoMapper
 
         public PontoAutoMapper() {
             CreateMap<PontoEntity, PontoModel>().ReverseMap();
+            CreateMap<SolicitaRelatorioPontoEntity, SolicitaRelatorioPontoModel>().ReverseMap();
             //CreateMap<RegistroPontoDto, FuncionarioEntity>()
-                //.ForMember(fe => fe.Id, opt => opt.Ignore());
+            //.ForMember(fe => fe.Id, opt => opt.Ignore());
             //CreateMap<PontoModel, FuncionarioDtoRetorno>();
             //CreateMap<ListaPaginada<FuncionarioModel>, ListaPaginada<FuncionarioDtoRetorno>>();
         }

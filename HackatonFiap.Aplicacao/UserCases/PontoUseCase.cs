@@ -42,7 +42,8 @@ namespace HackatonFiap.Aplicacao.UserCases
         public async Task RegistrarPonto(RegistroPontoDto registroPontoDto)
         {
             var funcionario = await _funcionarioRepository.Obter(f => f.Email == registroPontoDto.EmailFuncionario);
-            var registroPonto = new PontoModel {
+            var registroPonto = new PontoModel
+            {
                 Horario = registroPontoDto.Horario,
                 FuncionarioId = funcionario.Id
             };

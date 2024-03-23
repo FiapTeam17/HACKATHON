@@ -18,16 +18,16 @@ public static class ConfiguracaoServicos
     {
         var varDbServer = configuration.GetValue<string>("DbServer");
         string? dbServer = string.IsNullOrEmpty(varDbServer) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(varDbServer);
-            
+
         var varDbUser = configuration.GetValue<string>("DbUser");
         string? dbUser = string.IsNullOrEmpty(varDbUser) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(varDbUser);
-            
+
         var varDbPass = configuration.GetValue<string>("DbPass");
         string? dbPass = string.IsNullOrEmpty(varDbPass) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(varDbPass);
-            
+
         var varDbSchema = configuration.GetValue<string>("DbSchema");
         string? dbSchema = string.IsNullOrEmpty(varDbSchema) ? string.Empty : UtilExtension.GetDecodedEnvironmentVariable(varDbSchema);
-            
+
         var connectionString = configuration.GetConnectionString("ConnectionString");
         connectionString = connectionString?.Replace("[DB_SERVER]", dbServer);
         connectionString = connectionString?.Replace("[DB_USER]", dbUser);
@@ -43,16 +43,18 @@ public static class ConfiguracaoServicos
         {
             options.UseMySQL(connectionString, op => op.CommandTimeout(600));
         });
-        
+
         services.AddAWSService<IAmazonCognitoIdentityProvider>();
-        
+
         services.AddScoped<DatabaseContext>();
         services.AddScoped<DbContext, DatabaseContext>();
-        
+
         services.AddScoped<ICognitoRepository, CognitoRepository>();
+        services.AddScoped<ISqsRepository, SqsRepository>();
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 
         services.AddScoped<IPontoRepository, PontoRepository>();
+        services.AddScoped<ISolicitaRelatorioPontoRepository, SolicitaRelatorioPontoRepository>();
         services.AddScoped<ITransactionService, TransactionService>();
 
         return services;

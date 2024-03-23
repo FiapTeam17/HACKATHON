@@ -8,6 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="SolicitaPonto\**" />
+      <EmbeddedResource Remove="SolicitaPonto\**" />
+      <None Remove="SolicitaPonto\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
     </ItemGroup>
 
