@@ -13,6 +13,7 @@ namespace HackatonFiap.Controllers
         private readonly IPontoUseCase _pontoUseCase;
         private readonly IUser _user;
         private readonly ILogger<PontoController> _logger;
+        
         private readonly ISolicitaRelatorioPontoUseCase _solicitaRelatorioPontoUseCase;
 
         public PontoController(
@@ -30,18 +31,27 @@ namespace HackatonFiap.Controllers
         }
 
         [HttpPost()]
-        public async Task<ActionResult> RegistrarPonto(RegistroPontoDto registroPontoDto)
+        public async Task<ActionResult> RegistrarPonto()
         {
+            RegistroPontoDto registroPontoDto = new RegistroPontoDto
+            {
+                EmailFuncionario = _user.GetUserEmail()!
+            };
             await _pontoUseCase.RegistrarPonto(registroPontoDto);
             return Ok();
         }
 
-        [HttpPost("visualizarRegistrosDiaFuncionario")]
-        public async Task<ActionResult<SolicitacaoRegistrosRetornoDto>> VisualizarRegistrosDiaFuncionario([FromBody] SolicitacaoRegistrosDiaDto solicitacaoRegistrosDiaDto)
-        {
+        [HttpGet("visualizarRegistrosDiaFuncionario")]
+        public async Task<ActionResult<SolicitacaoRegistrosRetornoDto>> VisualizarRegistrosDiaFuncionario([FromQuery] string data)
+        {   
+            var solicitacaoRegistrosDiaDto = new SolicitacaoRegistrosDiaDto
+            {
+                Email = _user.GetUserEmail()!,
+                data = data
+            };
+            
             var retorno = await _pontoUseCase.ObterRegistrosDePontoDia(solicitacaoRegistrosDiaDto);
             return CustomResponse(retorno);
-
         }
 
         [HttpPost("solicitarRelatorioPonto")]

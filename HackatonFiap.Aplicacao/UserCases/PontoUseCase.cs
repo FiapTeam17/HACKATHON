@@ -4,11 +4,6 @@ using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Ponto.Dtos;
 using HackatonFiap.Dominio.Ponto.Enums;
 using HackatonFiap.Dominio.Ponto.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HackatonFiap.Aplicacao.UserCases
 {
@@ -18,20 +13,17 @@ namespace HackatonFiap.Aplicacao.UserCases
         private readonly IFuncionarioRepository _funcionarioRepository;
         private readonly INotificador _notificador;
         private readonly IMapper _mapper;
-        private readonly IFuncionarioUseCase _funcionarioUseCase;
 
         public PontoUseCase(
             IPontoRepository pontoRepository,
             IFuncionarioRepository funcionarioRepository,
             INotificador notificador,
-            IMapper mapper,
-            IFuncionarioUseCase funcionarioUseCase
-            )
+            IMapper mapper
+        )
         {
             _pontoRepository = pontoRepository;
             _notificador = notificador;
             _mapper = mapper;
-            _funcionarioUseCase = funcionarioUseCase;
             _funcionarioRepository = funcionarioRepository;
         }
 
