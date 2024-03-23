@@ -2,6 +2,7 @@
 using HackatonFiap.Aplicacao.Interfaces;
 using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Ponto.Dtos;
+using HackatonFiap.Dominio.Ponto.Enums;
 using HackatonFiap.Dominio.Ponto.Models;
 using System;
 using System.Collections.Generic;
@@ -42,14 +43,22 @@ namespace HackatonFiap.Aplicacao.UserCases
         public async Task RegistrarPonto(RegistroPontoDto registroPontoDto)
         {
             var funcionario = await _funcionarioRepository.Obter(f => f.Email == registroPontoDto.EmailFuncionario);
-            var registroPonto = new PontoModel
-            {
+            var diaCorrente = DateTime.Today.Day;
+            var registrosNoDia = await _pontoRepository.BuscarLista(r => r.FuncionarioId == funcionario.Id && r.Horario.Day == diaCorrente);
+            var registroPonto = new PontoModel {
                 Horario = registroPontoDto.Horario,
-                FuncionarioId = funcionario.Id
+                FuncionarioId = funcionario.Id,
+                tipo = VerificarTipoRegistro(registrosNoDia)
             };
 
             _pontoRepository.Adicionar(registroPonto);
             await _pontoRepository.SaveChanges();
         }
+
+        private TipoRegistroPonto VerificarTipoRegistro(List<PontoModel> registros) {
+            if (registros.Count() == 0) return TipoRegistroPonto.ENTRADA;
+            return registros.Count() % 2 == 0 ? TipoRegistroPonto.ENTRADA : TipoRegistroPonto.SAIDA;
+        }
+
     }
 }
