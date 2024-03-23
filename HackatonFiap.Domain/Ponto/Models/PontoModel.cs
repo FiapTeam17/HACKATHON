@@ -1,4 +1,6 @@
 ﻿using HackatonFiap.Dominio.Funcionario.Models;
+using HackatonFiap.Dominio.Ponto.Dtos;
+using HackatonFiap.Dominio.Ponto.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +14,6 @@ namespace HackatonFiap.Dominio.Ponto.Models
         public DateTime Horario { get; set; }
         public FuncionarioModel? Funcionario { get; set; }
         public Guid FuncionarioId { get; set; }
+        public TipoRegistroPonto tipo {  get; set; }
     }
 }
