@@ -7,7 +7,6 @@ using HackatonFiap.Comum.Notificacoes;
 using HackatonFiap.Dominio.Ponto.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace HackatonFiap.Infraestrutura.Repository.Integracao;
 public class SqsRepository : ISqsRepository

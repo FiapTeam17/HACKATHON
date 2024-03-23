@@ -36,11 +36,11 @@ namespace HackatonFiap.Controllers
             return Ok();
         }
 
-        [HttpGet(("{id}"))]
-        public async Task<ActionResult> GerarRelatorioDePonto(string email)
+        [HttpPost("visualizarRegistrosDiaFuncionario")]
+        public async Task<ActionResult<SolicitacaoRegistrosRetornoDto>> VisualizarRegistrosDiaFuncionario([FromBody] SolicitacaoRegistrosDiaDto solicitacaoRegistrosDiaDto)
         {
-            await _pontoUseCase.listarRegistrosFuncionario(email);
-            return CustomResponse("OK");
+            var retorno = await _pontoUseCase.ObterRegistrosDePontoDia(solicitacaoRegistrosDiaDto);
+            return CustomResponse(retorno);
 
         }
 
