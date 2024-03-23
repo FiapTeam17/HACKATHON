@@ -40,6 +40,22 @@ namespace HackatonFiap.Aplicacao.UserCases
             throw new NotImplementedException();
         }
 
+        public async Task<SolicitacaoRegistrosRetornoDto> ObterRegistrosDePontoDia(SolicitacaoRegistrosDiaDto solicitacaoRegistrosDiaDto)
+        {
+            var dia = DateTime.Parse(solicitacaoRegistrosDiaDto.data);
+            var funcionario = await _funcionarioRepository.Obter(f => f.Email == solicitacaoRegistrosDiaDto.Email);
+            var registros = await _pontoRepository.BuscarLista(r => r.FuncionarioId == funcionario.Id && r.Horario.Date == dia).ConfigureAwait(false);
+
+
+            var retorno = new SolicitacaoRegistrosRetornoDto()
+            {
+                HorasTrabalhadas = CalcularHorasTrabalhadasDia(registros),
+                Registros = PreencheRegistroDia(registros).OrderByDescending(r => r.Horario).ToList(),
+            };
+
+            return retorno;
+        }
+
         public async Task RegistrarPonto(RegistroPontoDto registroPontoDto)
         {
             var funcionario = await _funcionarioRepository.Obter(f => f.Email == registroPontoDto.EmailFuncionario);
@@ -60,5 +76,44 @@ namespace HackatonFiap.Aplicacao.UserCases
             return registros.Count() % 2 == 0 ? TipoRegistroPonto.ENTRADA : TipoRegistroPonto.SAIDA;
         }
 
+        private string CalcularHorasTrabalhadasDia(List<PontoModel> registros)
+        {
+            TimeSpan horasTrabalhadas = TimeSpan.Zero;
+
+            registros = registros.OrderByDescending(r => r.Horario).ToList();
+
+            var entradas = registros.FindAll(r => r.tipo == TipoRegistroPonto.ENTRADA);
+            var saidas = registros.FindAll(r => r.tipo == TipoRegistroPonto.SAIDA);
+
+            if (entradas.Count() > saidas.Count())
+            {
+                // remover um registro da entrada e usar o removido para somar as horas até o fim do dia
+                entradas.RemoveAt(entradas.Count() - 1);
+            }
+
+            for (int i = 0; i < saidas.Count(); i++)
+            {
+                horasTrabalhadas = horasTrabalhadas + ((DateTime)saidas[i].Horario - (DateTime)entradas[i].Horario);
+            }
+            var totalDia = Math.Round(horasTrabalhadas.TotalHours, 0);
+
+            return horasTrabalhadas.ToString();
+        }
+
+        private List<ÌnformacoesRegistroPontoDto> PreencheRegistroDia(List<PontoModel> registros)
+        {
+            var retorno = new List<ÌnformacoesRegistroPontoDto>();
+
+            foreach (PontoModel registro in registros)
+            {
+                retorno.Add(new ÌnformacoesRegistroPontoDto()
+                {
+                    Horario = registro.Horario,
+                    TipoRegistro = registro.tipo
+                });
+            }
+
+            return retorno;
+        }
     }
 }

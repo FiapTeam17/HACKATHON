@@ -11,5 +11,6 @@ namespace HackatonFiap.Aplicacao.Interfaces
     {
         Task RegistrarPonto(RegistroPontoDto registroPontoDto);
         Task<List<RegistroPontoDtoRetorno>> listarRegistrosFuncionario(string emailFuncionario);
+        Task<SolicitacaoRegistrosRetornoDto> ObterRegistrosDePontoDia(SolicitacaoRegistrosDiaDto solicitacaoRegistrosDiaDto);
     }
 }
