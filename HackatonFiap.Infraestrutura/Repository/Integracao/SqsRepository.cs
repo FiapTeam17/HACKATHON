@@ -1,4 +1,5 @@
-﻿using Amazon;
+﻿using System.Text.Json;
+using Amazon;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using HackatonFiap.Aplicacao.Interfaces.Integracao;
@@ -11,22 +12,14 @@ using Newtonsoft.Json;
 namespace HackatonFiap.Infraestrutura.Repository.Integracao;
 public class SqsRepository : ISqsRepository
 {
-    private readonly HttpClient _httpClient;
-    private readonly AmazonSQSClient _amazonSqsClient;
     private readonly IConfiguration _configuration;
-    private readonly INotificador _notificador;
-    private readonly ILogger<SqsRepository> _logger;
-
+    
     public SqsRepository(
-        IHttpClientFactory httpClientFactory,
         IConfiguration configuration,
-        INotificador notificador,
-        ILogger<SqsRepository> logger)
+        ILogger<SqsRepository> logger
+    )
     {
-        _httpClient = httpClientFactory.CreateClient();
         _configuration = configuration;
-        _notificador = notificador;
-        _logger = logger;
     }
 
     public async Task SolicitarRelatorio(PeriodoModel periodoModel)
@@ -39,7 +32,7 @@ public class SqsRepository : ISqsRepository
         var sqsClient = new AmazonSQSClient(awsAccessKey, awsSecretKey, awsRegion);
 
         // Serializando o objeto em formato JSON
-        var mensagemJson = JsonConvert.SerializeObject(periodoModel);
+        var mensagemJson = JsonSerializer.Serialize(periodoModel);
 
         // URL da fila do SQS
         var queueUrl = "https://sqs.us-east-2.amazonaws.com/190197150713/periodo.fifo"; // Substitua pelo URL da sua fila

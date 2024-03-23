@@ -14,4 +14,5 @@ public record SolicitaRelatorioPontoModel : BaseModel
     public DateTime DataInicio { get; set; }
     public DateTime DataFim { get; set; }
     public string Status { get; set; }
+    public string? CaminhoArquivo { get; set; }
 }
