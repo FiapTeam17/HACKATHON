@@ -15,8 +15,8 @@
         "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
         "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
         "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
-        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0WFpCUzJJV1A=",
-        "AWS_CLIENT_SECRET": "YWtmazRiQlQwckVqRWY3MmNpV2xJYmhtdFcrNW83RCtad2g1R2puZQ=="
+        "AWS_CLIENT_ID": "",
+        "AWS_CLIENT_SECRET": ""
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5081"
@@ -36,8 +36,8 @@
         "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
         "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
         "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
-        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0WFpCUzJJV1A=",
-        "AWS_CLIENT_SECRET": "YWtmazRiQlQwckVqRWY3MmNpV2xJYmhtdFcrNW83RCtad2g1R2puZQ=="
+        "AWS_CLIENT_ID": "",
+        "AWS_CLIENT_SECRET": ""
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7185;http://localhost:5081"
@@ -67,8 +67,8 @@
         "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
         "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
         "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
-        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0NEcyNVVFVlg=",
-        "AWS_CLIENT_SECRET": "ZUJncWlrejRyZGxuMVZ0V3o1SnZESEVWM0drRlRmQStiOS9LM0tMdQ=="
+        "AWS_CLIENT_ID": "",
+        "AWS_CLIENT_SECRET": ""
       },
       "publishAllPorts": true,
       "useSSL": true
