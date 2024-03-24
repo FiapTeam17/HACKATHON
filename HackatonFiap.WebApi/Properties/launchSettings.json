@@ -1,0 +1,86 @@
+{
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_SERVER": "ZmlhcC1oYWNrYXRvbi5jdTd5ajNnamprczEudXMtZWFzdC0yLnJkcy5hbWF6b25hd3MuY29t",
+        "DB_USER": "cm9vdA==",
+        "DB_PASS": "c2VuaGExMjM=",
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
+        "REGION": "dXMtZWFzdC0y",
+        "AWS_REGION": "us-east-2",
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
+        "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
+        "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
+        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0WFpCUzJJV1A=",
+        "AWS_CLIENT_SECRET": "YWtmazRiQlQwckVqRWY3MmNpV2xJYmhtdFcrNW83RCtad2g1R2puZQ=="
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5081"
+    },
+    "https": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_SERVER": "ZmlhcC1oYWNrYXRvbi5jdTd5ajNnamprczEudXMtZWFzdC0yLnJkcy5hbWF6b25hd3MuY29t",
+        "DB_USER": "cm9vdA==",
+        "DB_PASS": "c2VuaGExMjM=",
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
+        "REGION": "dXMtZWFzdC0y",
+        "AWS_REGION": "us-east-2",
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
+        "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
+        "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
+        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0WFpCUzJJV1A=",
+        "AWS_CLIENT_SECRET": "YWtmazRiQlQwckVqRWY3MmNpV2xJYmhtdFcrNW83RCtad2g1R2puZQ=="
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7185;http://localhost:5081"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_HTTPS_PORTS": "8081",
+        "ASPNETCORE_HTTP_PORTS": "8080",
+		"ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_SERVER": "ZmlhcC1oYWNrYXRvbi5jdTd5ajNnamprczEudXMtZWFzdC0yLnJkcy5hbWF6b25hd3MuY29t",
+        "DB_USER": "cm9vdA==",
+        "DB_PASS": "c2VuaGExMjM=",
+        "DB_SCHEMA": "Y29udHJvbGVfcG9udG8=",
+        "REGION": "dXMtZWFzdC0y",
+        "AWS_REGION": "us-east-2",
+        "USER_POOL_ID": "dXMtZWFzdC0yX2p5V2dERkRJRQ==",
+        "CLIENT_LOGIN_ID": "MjNxbnRiMmhtMGlrNjI3YTQ4aDRsdjljdDk=",
+        "CLIENT_ID": "Y2dmYnQ5MWN1azZhZ3Y1ZTA3cms0ZmZpNA==",
+        "AWS_CLIENT_ID": "QUtJQVNZU0ZDR1A0NEcyNVVFVlg=",
+        "AWS_CLIENT_SECRET": "ZUJncWlrejRyZGxuMVZ0V3o1SnZESEVWM0drRlRmQStiOS9LM0tMdQ=="
+      },
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:27085",
+      "sslPort": 44329
+    }
+  }
+}

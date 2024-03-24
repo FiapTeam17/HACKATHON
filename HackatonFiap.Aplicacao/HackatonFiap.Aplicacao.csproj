@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HackatonFiap.Comum\HackatonFiap.Comum.csproj" />
+      <ProjectReference Include="..\HackatonFiap.Domain\HackatonFiap.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.303.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    </ItemGroup>
+
+</Project>
